@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yunzhe.info/2021/Jump%20Game/</loc>
+    
+    <lastmod>2021-01-25</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yunzhe.info/2020/Generate%20Django%20SImple%20JWT%20Manually/</loc>
     
-    <lastmod>2020-11-11</lastmod>
+    <lastmod>2021-01-08</lastmod>
     
   </url>
   
@@ -53,7 +60,7 @@
 
   <url>
     <loc>http://yunzhe.info/</loc>
-    <lastmod>2020-11-11</lastmod>
+    <lastmod>2021-02-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -61,14 +68,28 @@
   
   <url>
     <loc>http://yunzhe.info/tags/Django/</loc>
-    <lastmod>2020-11-11</lastmod>
+    <lastmod>2021-02-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yunzhe.info/tags/Dynamic-Programming/</loc>
+    <lastmod>2021-02-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yunzhe.info/tags/Greedy/</loc>
+    <lastmod>2021-02-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yunzhe.info/tags/Next/</loc>
-    <lastmod>2020-11-11</lastmod>
+    <lastmod>2021-02-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -77,14 +98,21 @@
   
   <url>
     <loc>http://yunzhe.info/categories/%E5%90%8E%E5%8F%B0/</loc>
-    <lastmod>2020-11-11</lastmod>
+    <lastmod>2021-02-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yunzhe.info/categories/LeetCode/</loc>
+    <lastmod>2021-02-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yunzhe.info/categories/Blog/</loc>
-    <lastmod>2020-11-11</lastmod>
+    <lastmod>2021-02-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
