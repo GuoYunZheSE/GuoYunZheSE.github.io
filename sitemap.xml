@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yunzhe.info/about/index.html</loc>
+    <loc>http://yunzhe.info/2021/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90%EF%BC%9AThe%20Knight%E2%80%99s%20Dialer/</loc>
     
     <lastmod>2021-08-08</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yunzhe.info/2021/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90%EF%BC%9AThe%20Knight%E2%80%99s%20Dialer/</loc>
+    <loc>http://yunzhe.info/about/index.html</loc>
     
     <lastmod>2021-08-08</lastmod>
     
@@ -119,6 +119,13 @@
   
   <url>
     <loc>http://yunzhe.info/categories/Blog/</loc>
+    <lastmod>2021-08-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yunzhe.info/categories/Interview/</loc>
     <lastmod>2021-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
