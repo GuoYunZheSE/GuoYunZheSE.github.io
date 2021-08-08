@@ -26,30 +26,39 @@
     var CONFIG = {"hostname":"yunzhe.info","root":"/","scheme":"Gemini","version":"8.0.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="title: 字节跳动面试题目分析：The Knight’s Dialer date: 2021-08-08 16:03:02 tags: [Dynamic Programming] categories: Interview  字节跳动面试题目分析：The Knight’s Dialer  原文翻译自：https:&#x2F;&#x2F;medium.com&#x2F;@alexgolec&#x2F;google-interview">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Yunzhe&#39;s Site">
-<meta property="og:url" content="http://yunzhe.info/index.html">
+<meta property="og:url" content="http://yunzhe.info/2021/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90%EF%BC%9AThe%20Knight%E2%80%99s%20Dialer/index.html">
 <meta property="og:site_name" content="Yunzhe&#39;s Site">
+<meta property="og:description" content="title: 字节跳动面试题目分析：The Knight’s Dialer date: 2021-08-08 16:03:02 tags: [Dynamic Programming] categories: Interview  字节跳动面试题目分析：The Knight’s Dialer  原文翻译自：https:&#x2F;&#x2F;medium.com&#x2F;@alexgolec&#x2F;google-interview">
 <meta property="og:locale">
+<meta property="og:image" content="http://yunzhe.info/images/1_7TpBBvl8ZaAWa0Qid7WcvQ.jpeg">
+<meta property="og:image" content="https://miro.medium.com/max/422/1*pE4b3hqGDv7pKivQTQZyPw.png">
+<meta property="og:image" content="http://yunzhe.info/images/1_09ZdC7tkwu4WRkD7zx1wJQ.png">
+<meta property="og:image" content="http://yunzhe.info/images/1_56p21hEmBoUMPaudmzWXUQ.png">
+<meta property="article:published_time" content="2021-08-08T12:00:06.366Z">
+<meta property="article:modified_time" content="2021-08-08T12:00:06.366Z">
 <meta property="article:author" content="郭蕴喆">
 <meta property="article:tag" content="郭蕴喆">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yunzhe.info/images/1_7TpBBvl8ZaAWa0Qid7WcvQ.jpeg">
 
 
-<link rel="canonical" href="http://yunzhe.info/">
+<link rel="canonical" href="http://yunzhe.info/2021/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90%EF%BC%9AThe%20Knight%E2%80%99s%20Dialer/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-Hans'
   };
 </script>
 
-  <title>Yunzhe's Site</title>
+  <title> | Yunzhe's Site</title>
   
 
 
@@ -324,7 +333,7 @@ mjx-container[display="true"] + br {
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -335,6 +344,7 @@ mjx-container[display="true"] + br {
       </ul>
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90the-knights-dialer"><span class="nav-number">1.</span> <span class="nav-text">字节跳动面试题目分析：The Knight’s Dialer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-the-question"><span class="nav-number">1.1.</span> <span class="nav-text">问题描述 The Question</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A8%E8%AE%BA-discussion"><span class="nav-number">1.2.</span> <span class="nav-text">讨论 Discussion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC0%E5%B1%82%E8%8E%B7%E5%8F%96%E4%B8%8B%E4%B8%80%E8%B7%B3-getting-the-next-hop"><span class="nav-number">1.3.</span> <span class="nav-text">第0层：获取下一跳 Getting the Next Hop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC1%E5%B1%82%E9%80%92%E5%BD%92%E5%9C%B0%E4%BA%A7%E7%94%9F%E6%95%B0%E5%AD%97-recursively-generating-numbers"><span class="nav-number">1.4.</span> <span class="nav-text">第1层：递归地产生数字 Recursively Generating Numbers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC2%E5%B1%82%E4%B8%8D%E8%AE%A1%E6%95%B0%E8%80%8C%E8%AE%A1%E6%95%B0-counting-without-counting"><span class="nav-number">1.5.</span> <span class="nav-text">第2层：不计数而计数 Counting Without Counting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC3%E5%B1%82%E8%AE%B0%E5%BF%86-memoization"><span class="nav-number">1.6.</span> <span class="nav-text">第3层：记忆 Memoization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC4%E5%B1%82%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-dynamic-programming"><span class="nav-number">1.7.</span> <span class="nav-text">第4层：动态规划 Dynamic Programming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%84%E4%BC%B0"><span class="nav-number">1.8.</span> <span class="nav-text">评估</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9D%9F"><span class="nav-number">1.9.</span> <span class="nav-text">结束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%95%B0%E6%97%B6%E9%97%B4%E7%89%88%E6%9C%AC-logarithmic-time-edition"><span class="nav-number">1.10.</span> <span class="nav-text">对数时间版本 Logarithmic Time Edition</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -405,11 +415,12 @@ mjx-container[display="true"] + br {
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
       
 
       
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
@@ -428,10 +439,9 @@ mjx-container[display="true"] + br {
     
     
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+        <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90%EF%BC%9AThe%20Knight%E2%80%99s%20Dialer/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -452,6 +462,18 @@ mjx-container[display="true"] + br {
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90%EF%BC%9AThe%20Knight%E2%80%99s%20Dialer/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90%EF%BC%9AThe%20Knight%E2%80%99s%20Dialer/" itemprop="commentCount"></span>
+    </a>
+  </span>
   
   
       </div>
@@ -479,7 +501,7 @@ mjx-container[display="true"] + br {
     
     
     <div class="post-body" itemprop="articleBody">
-          <blockquote>
+        <blockquote>
 <p>title: 字节跳动面试题目分析：The Knight’s Dialer date: 2021-08-08 16:03:02 tags: [Dynamic Programming] categories: Interview</p>
 </blockquote>
 <h1 id="字节跳动面试题目分析the-knights-dialer">字节跳动面试题目分析：The Knight’s Dialer</h1>
@@ -601,7 +623,6 @@ mjx-container[display="true"] + br {
 <h2 id="对数时间版本-logarithmic-time-edition">对数时间版本 Logarithmic Time Edition</h2>
 <p>https://alexgolec.dev/knights-dialer-logarithmic-time-edition/</p>
 
-      
     </div>
 
     
@@ -609,579 +630,35 @@ mjx-container[display="true"] + br {
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yunzhe.info/2021/Jump%20Game/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/26548264?s=460&u=7894c524be1c4408fa561909d2179adb38859fed&v=4">
-      <meta itemprop="name" content="郭蕴喆">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yunzhe's Site">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/Jump%20Game/" class="post-title-link" itemprop="url">55. Jump Game</a>
-        </h2>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-01-18 16:17:12" itemprop="dateCreated datePublished" datetime="2021-01-18T16:17:12Z">2021-01-18</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-25 06:35:36" itemprop="dateModified" datetime="2021-01-25T06:35:36Z">2021-01-25</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2021/Jump%20Game/" class="post-meta-item leancloud_visitors" data-flag-title="55. Jump Game" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>3.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>郭蕴喆
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://yunzhe.info/2021/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90%EF%BC%9AThe%20Knight%E2%80%99s%20Dialer/" title="">http://yunzhe.info/2021/字节跳动面试题目分析：The Knight’s Dialer/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1IYW5z"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
 </div>
 
-        </div>
-      </header>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="jump-game">55. Jump Game</h1>
-<blockquote>
-<p>Medium</p>
-</blockquote>
-<h2 id="题目描述">题目描述</h2>
-<p>Given an array of non-negative integers <code>nums</code>, you are initially positioned at the <strong>first index</strong> of the array.</p>
-<p>Each element in the array represents your maximum jump length at that position.</p>
-<p>Determine if you are able to reach the last index.</p>
-<p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/Jump%20Game/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yunzhe.info/2020/Generate%20Django%20SImple%20JWT%20Manually/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/26548264?s=460&u=7894c524be1c4408fa561909d2179adb38859fed&v=4">
-      <meta itemprop="name" content="郭蕴喆">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yunzhe's Site">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/Generate%20Django%20SImple%20JWT%20Manually/" class="post-title-link" itemprop="url">不需要密码，手动生成Django Simple JWT</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-11-11 20:06:12" itemprop="dateCreated datePublished" datetime="2020-11-11T20:06:12Z">2020-11-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-08 08:16:55" itemprop="dateModified" datetime="2021-01-08T08:16:55Z">2021-01-08</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%90%8E%E5%8F%B0/" itemprop="url" rel="index"><span itemprop="name">后台</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2020/Generate%20Django%20SImple%20JWT%20Manually/" class="post-meta-item leancloud_visitors" data-flag-title="不需要密码，手动生成Django Simple JWT" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.9k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>​ 在后台开发的过程中，由于客户有跨系统自动登录用户的需求，在没有SSO系统的情况下，考虑使用生成指定用户的JWT的方式来达成免密码登录的效果，其中遇到了<code>Given token not valid for any token type</code>等错误。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/Generate%20Django%20SImple%20JWT%20Manually/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/Jump%20Game/" rel="prev" title="55. Jump Game">
+                  <i class="fa fa-chevron-left"></i> 55. Jump Game
+                </a>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yunzhe.info/2020/Viewer%20IP%20maps%20for%20Next%208.0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/26548264?s=460&u=7894c524be1c4408fa561909d2179adb38859fed&v=4">
-      <meta itemprop="name" content="郭蕴喆">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yunzhe's Site">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/Viewer%20IP%20maps%20for%20Next%208.0/" class="post-title-link" itemprop="url">Viewer IP maps for Next 8.0</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2020-10-12 13:16:52 / 修改时间：06:45:46" itemprop="dateCreated datePublished" datetime="2020-10-12T13:16:52Z">2020-10-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2020/Viewer%20IP%20maps%20for%20Next%208.0/" class="post-meta-item leancloud_visitors" data-flag-title="Viewer IP maps for Next 8.0" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.4k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><span class="exturl" data-url="aHR0cHM6Ly9saW5rcy5qaWFuc2h1LmNvbS9nbz90bz1odHRwcyUzQSUyRiUyRmNsdXN0cm1hcHMuY29t">clustrmaps.com<i class="fa fa-external-link-alt"></i></span> 是美国的一家数据网站，能够汇总公共记录来分析美国城市的社会人口和商业环境。</p>
-<blockquote>
-<p>Add the ClustrMaps hit tracker to your site or blog and see a real-time map of your visitors from around the world! Proudly show and grow your hidden community of interest.</p>
-</blockquote>
-<p>网址提供了生成访问者地址分布图的代码，可以嵌入到网站或博客中，来显示来自世界各地访问者的实时地图，有助于发展您隐藏的兴趣社区。最重要的是，这个功能是<strong>免费</strong>的，能够满足个人网站的需求。</p>
-<p>注册登录之后，将<code>/themes/next/layout/_macro/sidebar.njk</code>修改如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&#123;% macro render(display_toc) %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;toggle sidebar-toggle&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;toggle-line&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;toggle-line&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;toggle-line&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">aside</span> <span class="attr">class</span>=<span class="string">&quot;sidebar&quot;</span>&gt;</span></span><br><span class="line">    &#123;%- set display_toc = page.toc.enable and display_toc %&#125;</span><br><span class="line">    &#123;%- if display_toc %&#125;</span><br><span class="line">      &#123;%- set toc = toc(page.content, &#123; class: &quot;nav&quot;, list_number: page.toc.number, max_depth: page.toc.max_depth &#125;) %&#125;</span><br><span class="line">      &#123;%- set display_toc = toc.length &gt; 1 and display_toc %&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;sidebar-inner &#123;% if display_toc %&#125;sidebar-nav-active sidebar-toc-active&#123;% else %&#125;sidebar-overview-active&#123;% endif %&#125;&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;sidebar-nav&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;sidebar-nav-toc&quot;</span>&gt;</span></span><br><span class="line">          &#123;&#123; __(&#x27;sidebar.toc&#x27;) &#125;&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;sidebar-nav-overview&quot;</span>&gt;</span></span><br><span class="line">          &#123;&#123; __(&#x27;sidebar.overview&#x27;) &#125;&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--noindex--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">&quot;post-toc-wrap sidebar-panel&quot;</span>&gt;</span></span><br><span class="line">        &#123;%- if display_toc %&#125;</span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;post-toc animated&quot;</span>&gt;</span>&#123;&#123; toc &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        &#123;%- endif %&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--/noindex--&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">&quot;site-overview-wrap sidebar-panel&quot;</span>&gt;</span></span><br><span class="line">        &#123;&#123; partial(&#x27;_partials/sidebar/site-overview.njk&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line"></span><br><span class="line">        &#123;&#123;- next_inject(&#x27;sidebar&#x27;) &#125;&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      &#123;%- if theme.back2top.enable and theme.back2top.sidebar %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;back-to-top animated&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-arrow-up&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span>&gt;</span>0%<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      &#123;%- endif %&#125;</span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">id</span>=<span class="string">&quot;clstr_globe&quot;</span> <span class="attr">src</span>=<span class="string">&quot;//clustrmaps.com/globe.js?d=插入网站给出的代码&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;sidebar-dimmer&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;% endmacro %&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>最终结果如图所示：</p>
-<p><img src="/images/image-20201012132342318.png" alt="image-20201012132342318" style="zoom:50%;" /></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yunzhe.info/2020/Django%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A4%9A%E7%94%A8%E6%88%B7%E7%B1%BB%E6%97%A0%E6%B3%95%E4%BA%A7%E7%94%9F%E7%94%A8%E6%88%B7%E8%A1%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/26548264?s=460&u=7894c524be1c4408fa561909d2179adb38859fed&v=4">
-      <meta itemprop="name" content="郭蕴喆">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yunzhe's Site">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/Django%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A4%9A%E7%94%A8%E6%88%B7%E7%B1%BB%E6%97%A0%E6%B3%95%E4%BA%A7%E7%94%9F%E7%94%A8%E6%88%B7%E8%A1%A8/" class="post-title-link" itemprop="url">Django自定义多用户类</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-10-10 22:06:52" itemprop="dateCreated datePublished" datetime="2020-10-10T22:06:52Z">2020-10-10</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-11-11 12:05:38" itemprop="dateModified" datetime="2020-11-11T12:05:38Z">2020-11-11</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%90%8E%E5%8F%B0/" itemprop="url" rel="index"><span itemprop="name">后台</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2020/Django%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A4%9A%E7%94%A8%E6%88%B7%E7%B1%BB%E6%97%A0%E6%B3%95%E4%BA%A7%E7%94%9F%E7%94%A8%E6%88%B7%E8%A1%A8/" class="post-meta-item leancloud_visitors" data-flag-title="Django自定义多用户类" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>5.5k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>最近接了一个项目，打算用<code>Django+Vue</code>的方式去搭建一个网站.</p>
-<p>由于网站的使用用户分为两类，因此决定使用<code>OneToOneField</code>的方法去自定义用户类.</p>
-<p>具体代码如下:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># File: /core/modles.py</span></span><br><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> AbstractUser</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span>(<span class="params">AbstractUser</span>):</span></span><br><span class="line">    user_type = models.IntegerField()</span><br><span class="line">    user_mobile = models.CharField(max_length=<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LegalPersonTable</span>(<span class="params">models.Model</span>):</span></span><br><span class="line">    User = models.OneToOneField(<span class="string">&#x27;core.User&#x27;</span>, on_delete=models.CASCADE, primary_key=<span class="literal">True</span>)</span><br><span class="line">    company_name = models.CharField(max_length=<span class="number">100</span>)</span><br><span class="line">    unified_social_credit_code = models.CharField(max_length=<span class="number">18</span>)</span><br><span class="line">    legal_person_name = models.CharField(max_length=<span class="number">50</span>)</span><br><span class="line">    legal_person_mobile = models.CharField(max_length=<span class="number">20</span>)</span><br><span class="line">    legal_person_certification_type = models.IntegerField()</span><br><span class="line">    legal_person_certification_number = models.CharField(max_length=<span class="number">255</span>)</span><br><span class="line">    corresponding_person_name = models.CharField(max_length=<span class="number">50</span>)</span><br><span class="line">    corresponding_person_mobile = models.CharField(max_length=<span class="number">20</span>)</span><br><span class="line">    legal_person_idcard_front_url = models.CharField(max_length=<span class="number">255</span>)</span><br><span class="line">    legal_person_idcard_back_url = models.CharField(max_length=<span class="number">255</span>)</span><br><span class="line">    business_license_url = models.CharField(max_length=<span class="number">255</span>)</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        db_table = <span class="string">&#x27;legal_person_table&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NaturalPersonTable</span>(<span class="params">models.Model</span>):</span></span><br><span class="line">    User = models.OneToOneField(<span class="string">&#x27;core.User&#x27;</span>, models.CASCADE, primary_key=<span class="literal">True</span>)</span><br><span class="line">    real_name = models.CharField(max_length=<span class="number">100</span>)</span><br><span class="line">    idcard_number = models.CharField(max_length=<span class="number">18</span>)</span><br><span class="line">    idcard_front_url = models.CharField(max_length=<span class="number">255</span>)</span><br><span class="line">    idcard_back_url = models.CharField(max_length=<span class="number">255</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        db_table = <span class="string">&#x27;natural_person_table&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>在这里需要注意的是，如果发现运行正常，但是数据库没有改动的话：</p>
-<blockquote>
-<p><strong>Meta 的 managed属性</strong></p>
-<p>由于Django会自动根据模型类生成映射的数据库表，如果你不希望Django这么做，可以把managed的值设置为False。</p>
-<p>默认值为True,这个选项为True时Django可以对数据库表进行 migrate或migrations、删除等操作。在这个时间Django将管理数据库中表的生命周期</p>
-<p>如果为False的时候，不会对数据库表进行创建、删除等操作。可以用于现有表、数据库视图等，其他操作是一样的。</p>
-</blockquote>
-<ol type="1">
-<li><p>在<code>setting.py</code>中增加<code>AUTH_USER_MODEL = 'core.User'</code></p></li>
-<li><p>需要在<code>admin.py</code>中进行注册：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">admin.site.register(User, UserAdmin)</span><br><span class="line">admin.site.register(NaturalPersonTable)</span><br><span class="line">admin.site.register(LegalPersonTable)</span><br></pre></td></tr></table></figure></li>
-<li>一步一步执行：
-<ol type="1">
-<li><p><code>python manage.py makemigrations core</code>显示正常</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Migrations <span class="keyword">for</span> <span class="string">&#x27;core&#x27;</span>:</span><br><span class="line">  core/migrations/0001_initial.py</span><br><span class="line">    - Create model User</span><br><span class="line">    - Create model LegalPersonTable</span><br><span class="line">    - Create model NaturalPersonTable</span><br><span class="line">(Spider) </span><br></pre></td></tr></table></figure></li>
-<li><p><code>python manage.py sqlmigrate core 0001</code>同样显示正常</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">--</span><br><span class="line">-- Create model User</span><br><span class="line">--</span><br><span class="line">CREATE TABLE &#96;core_user&#96; (&#96;id&#96; integer AUTO_INCREMENT NOT NULL PRIMARY KEY, &#96;password&#96; varchar(128) NOT NULL, &#96;last_login&#96; datetime(6) NULL, &#96;is_superuser&#96; bool NOT NULL, &#96;username&#96; varchar(150) NOT NULL UNIQUE, &#96;first_name&#96; varchar(150) NOT NULL, &#96;last_name&#96; varchar(150) NOT NULL, &#96;email&#96; varchar(254) NOT NULL, &#96;is_staff&#96; bool NOT NULL, &#96;is_active&#96; bool NOT NULL, &#96;date_joined&#96; datetime(6) NOT NULL, &#96;user_type&#96; integer NOT NULL, &#96;user_mobile&#96; varchar(20) NOT NULL);</span><br><span class="line">CREATE TABLE &#96;core_user_groups&#96; (&#96;id&#96; integer AUTO_INCREMENT NOT NULL PRIMARY KEY, &#96;user_id&#96; integer NOT NULL, &#96;group_id&#96; integer NOT NULL);</span><br><span class="line">CREATE TABLE &#96;core_user_user_permissions&#96; (&#96;id&#96; integer AUTO_INCREMENT NOT NULL PRIMARY KEY, &#96;user_id&#96; integer NOT NULL, &#96;permission_id&#96; integer NOT NULL);</span><br><span class="line">--</span><br><span class="line">-- Create model LegalPersonTable</span><br><span class="line">--</span><br><span class="line">CREATE TABLE &#96;legal_person_table&#96; (&#96;User_id&#96; integer NOT NULL PRIMARY KEY, &#96;company_name&#96; varchar(100) NOT NULL, &#96;unified_social_credit_code&#96; varchar(18) NOT NULL, &#96;legal_person_name&#96; varchar(50) NOT NULL, &#96;legal_person_mobile&#96; varchar(20) NOT NULL, &#96;legal_person_certification_type&#96; integer NOT NULL, &#96;legal_person_certification_number&#96; varchar(255) NOT NULL, &#96;corresponding_person_name&#96; varchar(50) NOT NULL, &#96;corresponding_person_mobile&#96; varchar(20) NOT NULL, &#96;legal_person_idcard_front_url&#96; varchar(255) NOT NULL, &#96;legal_person_idcard_back_url&#96; varchar(255) NOT NULL, &#96;business_license_url&#96; varchar(255) NOT NULL);</span><br><span class="line">--</span><br><span class="line">-- Create model NaturalPersonTable</span><br><span class="line">--</span><br><span class="line">CREATE TABLE &#96;natural_person_table&#96; (&#96;User_id&#96; integer NOT NULL PRIMARY KEY, &#96;real_name&#96; varchar(100) NOT NULL, &#96;idcard_number&#96; varchar(18) NOT NULL, &#96;idcard_front_url&#96; varchar(255) NOT NULL, &#96;idcard_back_url&#96; varchar(255) NOT NULL);</span><br><span class="line">ALTER TABLE &#96;core_user_groups&#96; ADD CONSTRAINT &#96;core_user_groups_user_id_group_id_c82fcad1_uniq&#96; UNIQUE (&#96;user_id&#96;, &#96;group_id&#96;);</span><br><span class="line">ALTER TABLE &#96;core_user_groups&#96; ADD CONSTRAINT &#96;core_user_groups_user_id_70b4d9b8_fk_core_user_id&#96; FOREIGN KEY (&#96;user_id&#96;) REFERENCES &#96;core_user&#96; (&#96;id&#96;);</span><br><span class="line">ALTER TABLE &#96;core_user_groups&#96; ADD CONSTRAINT &#96;core_user_groups_group_id_fe8c697f_fk_auth_group_id&#96; FOREIGN KEY (&#96;group_id&#96;) REFERENCES &#96;auth_group&#96; (&#96;id&#96;);</span><br><span class="line">ALTER TABLE &#96;core_user_user_permissions&#96; ADD CONSTRAINT &#96;core_user_user_permissions_user_id_permission_id_73ea0daa_uniq&#96; UNIQUE (&#96;user_id&#96;, &#96;permission_id&#96;);</span><br><span class="line">ALTER TABLE &#96;core_user_user_permissions&#96; ADD CONSTRAINT &#96;core_user_user_permissions_user_id_085123d3_fk_core_user_id&#96; FOREIGN KEY (&#96;user_id&#96;) REFERENCES &#96;core_user&#96; (&#96;id&#96;);</span><br><span class="line">ALTER TABLE &#96;core_user_user_permissions&#96; ADD CONSTRAINT &#96;core_user_user_permi_permission_id_35ccf601_fk_auth_perm&#96; FOREIGN KEY (&#96;permission_id&#96;) REFERENCES &#96;auth_permission&#96; (&#96;id&#96;);</span><br><span class="line">ALTER TABLE &#96;legal_person_table&#96; ADD CONSTRAINT &#96;legal_person_table_User_id_9bc58715_fk_core_user_id&#96; FOREIGN KEY (&#96;User_id&#96;) REFERENCES &#96;core_user&#96; (&#96;id&#96;);</span><br><span class="line">ALTER TABLE &#96;natural_person_table&#96; ADD CONSTRAINT &#96;natural_person_table_User_id_72171d3a_fk_core_user_id&#96; FOREIGN KEY (&#96;User_id&#96;) REFERENCES &#96;core_user&#96; (&#96;id&#96;);</span><br><span class="line">(Spider) </span><br></pre></td></tr></table></figure></li>
-<li><p><code>python manage.py migrate</code>即可</p></li>
-</ol></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yunzhe.info/2020/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/26548264?s=460&u=7894c524be1c4408fa561909d2179adb38859fed&v=4">
-      <meta itemprop="name" content="郭蕴喆">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yunzhe's Site">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-10-08 13:30:57" itemprop="dateCreated datePublished" datetime="2020-10-08T13:30:57Z">2020-10-08</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-10-09 13:37:23" itemprop="dateModified" datetime="2020-10-09T13:37:23Z">2020-10-09</time>
-      </span>
-
-  
-    <span id="/2020/hello-world/" class="post-meta-item leancloud_visitors" data-flag-title="Hello World" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>367</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvLw==">Hexo<i class="fa fa-external-link-alt"></i></span>! This is your very first post. Check <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv">documentation<i class="fa fa-external-link-alt"></i></span> for more info. If you get any problems when using Hexo, you can find the answer in <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=">troubleshooting<i class="fa fa-external-link-alt"></i></span> or you can ask me on <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvL2lzc3Vlcw==">GitHub<i class="fa fa-external-link-alt"></i></span>.</p>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvd3JpdGluZy5odG1s">Writing<i class="fa fa-external-link-alt"></i></span></p>
-<h3 id="run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvc2VydmVyLmh0bWw=">Server<i class="fa fa-external-link-alt"></i></span></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3MvZ2VuZXJhdGluZy5odG1s">Generating<i class="fa fa-external-link-alt"></i></span></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvb25lLWNvbW1hbmQtZGVwbG95bWVudC5odG1s">Deployment<i class="fa fa-external-link-alt"></i></span></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
   
@@ -1189,11 +666,9 @@ mjx-container[display="true"] + br {
   
 
 
-  
-
-
 
       
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -1340,7 +815,7 @@ NexT.utils.loadComments('#valine-comments', () => {
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
     new Valine(Object.assign({
       el  : '#valine-comments',
-      path: "/",
+      path: "/2021/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90%EF%BC%9AThe%20Knight%E2%80%99s%20Dialer/",
     }, {"enable":true,"appId":"NkIRgN4kaGiB48kPYlsr3Wpr-gzGzoHsz","appKey":"09CdqoL75oQJXxvpPJf1VACu","placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":true,"comment_count":false,"recordIP":true,"serverURLs":null,"enableQQ":true,"requiredFields":["nick","mail"]}
     ));
   }, window.Valine);
