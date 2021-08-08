@@ -64,45 +64,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Viewer IP maps for Next 8.0</title>
-    <url>/2020/Viewer%20IP%20maps%20for%20Next%208.0/</url>
-    <content><![CDATA[<p><span class="exturl" data-url="aHR0cHM6Ly9saW5rcy5qaWFuc2h1LmNvbS9nbz90bz1odHRwcyUzQSUyRiUyRmNsdXN0cm1hcHMuY29t">clustrmaps.com<i class="fa fa-external-link-alt"></i></span> 是美国的一家数据网站，能够汇总公共记录来分析美国城市的社会人口和商业环境。</p>
-<blockquote>
-<p>Add the ClustrMaps hit tracker to your site or blog and see a real-time map of your visitors from around the world! Proudly show and grow your hidden community of interest.</p>
-</blockquote>
-<p>网址提供了生成访问者地址分布图的代码，可以嵌入到网站或博客中，来显示来自世界各地访问者的实时地图，有助于发展您隐藏的兴趣社区。最重要的是，这个功能是<strong>免费</strong>的，能够满足个人网站的需求。</p>
-<p>注册登录之后，将<code>/themes/next/layout/_macro/sidebar.njk</code>修改如下：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;% macro render(display_toc) %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;toggle sidebar-toggle&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;toggle-line&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;toggle-line&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;toggle-line&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">aside</span> <span class="attr">class</span>=<span class="string">&quot;sidebar&quot;</span>&gt;</span></span><br><span class="line">    &#123;%- set display_toc = page.toc.enable and display_toc %&#125;</span><br><span class="line">    &#123;%- if display_toc %&#125;</span><br><span class="line">      &#123;%- set toc = toc(page.content, &#123; class: &quot;nav&quot;, list_number: page.toc.number, max_depth: page.toc.max_depth &#125;) %&#125;</span><br><span class="line">      &#123;%- set display_toc = toc.length &gt; 1 and display_toc %&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;sidebar-inner &#123;% if display_toc %&#125;sidebar-nav-active sidebar-toc-active&#123;% else %&#125;sidebar-overview-active&#123;% endif %&#125;&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;sidebar-nav&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;sidebar-nav-toc&quot;</span>&gt;</span></span><br><span class="line">          &#123;&#123; __(&#x27;sidebar.toc&#x27;) &#125;&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;sidebar-nav-overview&quot;</span>&gt;</span></span><br><span class="line">          &#123;&#123; __(&#x27;sidebar.overview&#x27;) &#125;&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--noindex--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">&quot;post-toc-wrap sidebar-panel&quot;</span>&gt;</span></span><br><span class="line">        &#123;%- if display_toc %&#125;</span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;post-toc animated&quot;</span>&gt;</span>&#123;&#123; toc &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        &#123;%- endif %&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--/noindex--&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">&quot;site-overview-wrap sidebar-panel&quot;</span>&gt;</span></span><br><span class="line">        &#123;&#123; partial(&#x27;_partials/sidebar/site-overview.njk&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line"></span><br><span class="line">        &#123;&#123;- next_inject(&#x27;sidebar&#x27;) &#125;&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      &#123;%- if theme.back2top.enable and theme.back2top.sidebar %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;back-to-top animated&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-arrow-up&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span>&gt;</span>0%<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      &#123;%- endif %&#125;</span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">id</span>=<span class="string">&quot;clstr_globe&quot;</span> <span class="attr">src</span>=<span class="string">&quot;//clustrmaps.com/globe.js?d=插入网站给出的代码&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;sidebar-dimmer&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;% endmacro %&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>最终结果如图所示：</p>
-<p><img src="/images/image-20201012132342318.png" alt="image-20201012132342318" style="zoom:50%;" /></p>
-]]></content>
-      <categories>
-        <category>Blog</category>
-      </categories>
-      <tags>
-        <tag>Next</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2020/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvLw==">Hexo<i class="fa fa-external-link-alt"></i></span>! This is your very first post. Check <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv">documentation<i class="fa fa-external-link-alt"></i></span> for more info. If you get any problems when using Hexo, you can find the answer in <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=">troubleshooting<i class="fa fa-external-link-alt"></i></span> or you can ask me on <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvL2lzc3Vlcw==">GitHub<i class="fa fa-external-link-alt"></i></span>.</p>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvd3JpdGluZy5odG1s">Writing<i class="fa fa-external-link-alt"></i></span></p>
-<h3 id="run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvc2VydmVyLmh0bWw=">Server<i class="fa fa-external-link-alt"></i></span></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3MvZ2VuZXJhdGluZy5odG1s">Generating<i class="fa fa-external-link-alt"></i></span></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvb25lLWNvbW1hbmQtZGVwbG95bWVudC5odG1s">Deployment<i class="fa fa-external-link-alt"></i></span></p>
-]]></content>
-  </entry>
-  <entry>
     <title>55. Jump Game</title>
     <url>/2021/Jump%20Game/</url>
     <content><![CDATA[<h1 id="jump-game">55. Jump Game</h1>
@@ -272,6 +233,45 @@
       </tags>
   </entry>
   <entry>
+    <title>Viewer IP maps for Next 8.0</title>
+    <url>/2020/Viewer%20IP%20maps%20for%20Next%208.0/</url>
+    <content><![CDATA[<p><span class="exturl" data-url="aHR0cHM6Ly9saW5rcy5qaWFuc2h1LmNvbS9nbz90bz1odHRwcyUzQSUyRiUyRmNsdXN0cm1hcHMuY29t">clustrmaps.com<i class="fa fa-external-link-alt"></i></span> 是美国的一家数据网站，能够汇总公共记录来分析美国城市的社会人口和商业环境。</p>
+<blockquote>
+<p>Add the ClustrMaps hit tracker to your site or blog and see a real-time map of your visitors from around the world! Proudly show and grow your hidden community of interest.</p>
+</blockquote>
+<p>网址提供了生成访问者地址分布图的代码，可以嵌入到网站或博客中，来显示来自世界各地访问者的实时地图，有助于发展您隐藏的兴趣社区。最重要的是，这个功能是<strong>免费</strong>的，能够满足个人网站的需求。</p>
+<p>注册登录之后，将<code>/themes/next/layout/_macro/sidebar.njk</code>修改如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;% macro render(display_toc) %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;toggle sidebar-toggle&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;toggle-line&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;toggle-line&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;toggle-line&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">aside</span> <span class="attr">class</span>=<span class="string">&quot;sidebar&quot;</span>&gt;</span></span><br><span class="line">    &#123;%- set display_toc = page.toc.enable and display_toc %&#125;</span><br><span class="line">    &#123;%- if display_toc %&#125;</span><br><span class="line">      &#123;%- set toc = toc(page.content, &#123; class: &quot;nav&quot;, list_number: page.toc.number, max_depth: page.toc.max_depth &#125;) %&#125;</span><br><span class="line">      &#123;%- set display_toc = toc.length &gt; 1 and display_toc %&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;sidebar-inner &#123;% if display_toc %&#125;sidebar-nav-active sidebar-toc-active&#123;% else %&#125;sidebar-overview-active&#123;% endif %&#125;&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;sidebar-nav&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;sidebar-nav-toc&quot;</span>&gt;</span></span><br><span class="line">          &#123;&#123; __(&#x27;sidebar.toc&#x27;) &#125;&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;sidebar-nav-overview&quot;</span>&gt;</span></span><br><span class="line">          &#123;&#123; __(&#x27;sidebar.overview&#x27;) &#125;&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--noindex--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">&quot;post-toc-wrap sidebar-panel&quot;</span>&gt;</span></span><br><span class="line">        &#123;%- if display_toc %&#125;</span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;post-toc animated&quot;</span>&gt;</span>&#123;&#123; toc &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        &#123;%- endif %&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--/noindex--&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">&quot;site-overview-wrap sidebar-panel&quot;</span>&gt;</span></span><br><span class="line">        &#123;&#123; partial(&#x27;_partials/sidebar/site-overview.njk&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line"></span><br><span class="line">        &#123;&#123;- next_inject(&#x27;sidebar&#x27;) &#125;&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      &#123;%- if theme.back2top.enable and theme.back2top.sidebar %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;back-to-top animated&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-arrow-up&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span>&gt;</span>0%<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      &#123;%- endif %&#125;</span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">id</span>=<span class="string">&quot;clstr_globe&quot;</span> <span class="attr">src</span>=<span class="string">&quot;//clustrmaps.com/globe.js?d=插入网站给出的代码&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;sidebar-dimmer&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;% endmacro %&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>最终结果如图所示：</p>
+<p><img src="/images/image-20201012132342318.png" alt="image-20201012132342318" style="zoom:50%;" /></p>
+]]></content>
+      <categories>
+        <category>Blog</category>
+      </categories>
+      <tags>
+        <tag>Next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvLw==">Hexo<i class="fa fa-external-link-alt"></i></span>! This is your very first post. Check <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv">documentation<i class="fa fa-external-link-alt"></i></span> for more info. If you get any problems when using Hexo, you can find the answer in <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=">troubleshooting<i class="fa fa-external-link-alt"></i></span> or you can ask me on <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvL2lzc3Vlcw==">GitHub<i class="fa fa-external-link-alt"></i></span>.</p>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvd3JpdGluZy5odG1s">Writing<i class="fa fa-external-link-alt"></i></span></p>
+<h3 id="run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvc2VydmVyLmh0bWw=">Server<i class="fa fa-external-link-alt"></i></span></p>
+<h3 id="generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3MvZ2VuZXJhdGluZy5odG1s">Generating<i class="fa fa-external-link-alt"></i></span></p>
+<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvb25lLWNvbW1hbmQtZGVwbG95bWVudC5odG1s">Deployment<i class="fa fa-external-link-alt"></i></span></p>
+]]></content>
+  </entry>
+  <entry>
     <title>字节跳动面试题目分析：The Knight’s Dialer</title>
     <url>/2021/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90%EF%BC%9AThe%20Knight%E2%80%99s%20Dialer/</url>
     <content><![CDATA[<h1 id="字节跳动面试题目分析the-knights-dialer">字节跳动面试题目分析：The Knight’s Dialer</h1>
@@ -333,9 +333,7 @@
 <p>这是不好的。请求额外的跳转将使运行时间加倍(如果不是三倍的话)。对于像1到20这样的小数字，这是可以接受的，但当我们要求越来越大的跳数时，我们就碰壁了。例如，500个跳跃需要在宇宙热死亡后很久才能完成。</p>
 <h2 id="第3层记忆-memoization">第3层：记忆 Memoization</h2>
 <p>我们只使用上面的数学关系能做的更好吗？我喜欢这个问题的一个原因正是，它具有能够产生更多、更有效解决方案的洞察力层次。为了找到下一个，让我们映射出这个函数调用的函数。让我们考虑<code>count_sequences(6,4)</code>的情况。注意，为了简洁起见，我使用<code>C</code>作为函数名:</p>
-<figure>
-<img src="/images/1_09ZdC7tkwu4WRkD7zx1wJQ.png" alt="img" /><figcaption>img</figcaption>
-</figure>
+<p><img src="/images/1_09ZdC7tkwu4WRkD7zx1wJQ.png" /></p>
 <p>您可能会注意到一些特殊的事情:C(6,2)调用被执行了三次，每次都执行相同的计算，并返回相同的值。这里的关键是这些函数调用是重复的，每次返回相同的值。一旦计算出它们的结果，就不需要重新计算它们了。</p>
 <p>如果你想知道如何得出这个结论，最简单的方法是使用传统的白板:从抽象的角度看问题描述是很好的，但我总是鼓励考生在白板上给出一个示例解决方案。这样解决问题，然后像我上面那样画出这棵树你会注意到你多次写出的<code>C(6,2)</code> 的子树。有时候，这足以让候选人完全绕过解决方案1和2，直接跳到这个阶段。不用说，这在你只有45分钟解决一个问题的面试中节省了大量时间。</p>
 <p>有了这种洞察力，我们该如何解决这个问题呢?我们可以使用memoization (not memo<strong>r</strong>ization)，这基本上意味着我们记录以前见过的函数调用的结果，并使用这些结果，而不是重新计算。这样，当我们在调用图中遇到需要重新计算整个子树的地方时，我们会立即返回已经计算过的结果。这是一个实现:</p>
@@ -349,9 +347,7 @@
 <p>$T(P,N) = _{p neighbors}T(P,N-1) $</p>
 <p>注意，N跳的结果只依赖于N-1跳的调用的结果。同时，缓存包含每一个(非零)跳数的条目。因为它实际上不会造成任何实际问题，因为缓存只随跳数线性增长，需要线性空间并不是世界末日，所以称它为次要问题，但它仍然是低效的。</p>
 <p>到底发生了什么事?同样，当你查看已写出来的解决方案和代码时，结果是清楚的。注意，代码从最大的跳数开始，然后直接递归到最小的:</p>
-<figure>
-<img src="/images/1_56p21hEmBoUMPaudmzWXUQ.png" alt="img" /><figcaption>img</figcaption>
-</figure>
+<p><img src="/images/1_56p21hEmBoUMPaudmzWXUQ.png" /></p>
 <p>如果你将整个函数调用图想象成一种虚拟树，你将很快看到我们正在执行深度优先遍历）。这很好，它提供了一个适当的解决方案，但它没有利用我上面指出的浅层依赖属性。</p>
 <p>是否可以执行宽度优先遍历，即从顶部开始并在访问了N个跳跃之后才“访问”N-1个跳跃的函数调用?很遗憾,没有。具有非零跳的函数调用的值绝对需要来自较小跳数的值，所以在到达零跳层并开始返回数字而不是额外的函数调用之前，你不会得到任何结果(注意，图片这里没有描述零跳层)。</p>
 <p>但是，你可以颠倒顺序:只有在访问了具有N-1跳的层之后才访问具有N跳的层。那些学习过或正在学习离散数学的人会认识到<span class="exturl" data-url="aHR0cDovL3d3dy5jcy5jb3JuZWxsLmVkdS9jb3Vyc2VzL2NzMjgwMC8yMDExZmEvTGVjdHVyZXMvaW5kdWN0aW9uLnBkZg==">归纳<i class="fa fa-external-link-alt"></i></span>的所有必要成分:我们知道零跳函数调用的值总是1(基本情况)。我们也知道如何结合N-1跳值得到N跳值，使用递归关系(归纳步骤)。我们可以从一个零跳数的基本情况开始，归纳出所有大于零跳结果的值。这是一个实现:</p>
